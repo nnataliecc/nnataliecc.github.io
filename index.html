@@ -4,63 +4,155 @@
   <meta charset="UTF-8">
   <title>Natalie Chang | Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <!-- W3Schools CSS -->
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+  <style>
+    /* Color palette */
+    :root {
+      --soft-pink: #f7c6d0;
+      --hot-pink: #e75480;
+      --white: #ffffff;
+      --light-pink: #fdecef;
+    }
+
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: var(--white);
+    }
+
+    /* Top navigation bar (~1 cm tall) */
+    .top-nav {
+      height: 1cm;
+      background-color: var(--soft-pink);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      padding-left: 16px;
+    }
+
+    .top-nav a {
+      color: #333;
+      text-decoration: none;
+      margin-right: 20px;
+      font-weight: 500;
+    }
+
+    .top-nav a:hover {
+      color: var(--hot-pink);
+    }
+
+    /* Push content below nav */
+    .offset {
+      margin-top: 1.3cm;
+    }
+
+    /* Section styling */
+    section {
+      padding: 80px 24px;
+    }
+
+    .pink-section {
+      background-color: var(--light-pink);
+    }
+
+    /* Scroll animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      margin-bottom: 24px;
+    }
+
+    footer {
+      background-color: var(--soft-pink);
+      padding: 16px;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
 
-<!-- Top Navigation Bar -->
-<div class="w3-bar w3-black">
-  <a href="#home" class="w3-bar-item w3-button w3-mobile">Home</a>
-  <a href="#about" class="w3-bar-item w3-button w3-mobile">About</a>
-  <a href="#projects" class="w3-bar-item w3-button w3-mobile">Projects</a>
-  <a href="#contact" class="w3-bar-item w3-button w3-mobile">Contact</a>
+<!-- Navigation -->
+<div class="top-nav">
+  <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
 </div>
 
-<!-- Home Section -->
-<div class="w3-container w3-padding-64" id="home">
+<div class="offset"></div>
+
+<!-- Home -->
+<section id="home" class="fade-in">
   <h1 class="w3-xxlarge">Natalie Chang</h1>
-  <p class="w3-large">Aspiring data scientist interested in human cognition, mental health, and extreme environments.</p>
-</div>
+  <p class="w3-large">Exploring data science, cognition, and mental health in extreme environments.</p>
+</section>
 
-<!-- About Section -->
-<div class="w3-container w3-light-grey w3-padding-64" id="about">
+<!-- About -->
+<section id="about" class="pink-section fade-in">
   <h2>About Me</h2>
   <p>
-    I'm a freshman interested in cognitive science, psychology, and data science.
-    I'm particularly curious about how mental health support can be designed for
-    high-stress, high-isolation environments like space missions and underserved communities on Earth.
+    I’m a freshman interested in cognitive science, psychology, and data science.
+    I care deeply about mental health access, especially in high-stress and high-isolation
+    environments like space missions and underserved communities on Earth.
   </p>
-</div>
+</section>
 
-<!-- Projects Section -->
-<div class="w3-container w3-padding-64" id="projects">
+<!-- Projects -->
+<section id="projects" class="fade-in">
   <h2>Projects</h2>
 
-  <div class="w3-card w3-padding w3-margin-bottom">
+  <div class="project-card">
     <h3>Astronaut Sleep & Stress Analysis</h3>
-    <p>Exploring how sleep disruption and mission duration relate to stress indicators in astronauts.</p>
-    <a href="https://github.com/yourusername/astronaut-sleep-stress" target="_blank" class="w3-button w3-blue">View on GitHub</a>
+    <p>
+      An exploratory data analysis investigating how sleep disruption and mission duration
+      relate to reported stress indicators in astronauts.
+    </p>
+    <a href="https://github.com/yourusername/astronaut-sleep-stress" target="_blank" class="w3-button w3-pink">View on GitHub</a>
   </div>
+</section>
 
-  <div class="w3-card w3-padding w3-margin-bottom">
-    <h3>Other Project</h3>
-    <p>Short description of another project.</p>
-    <a href="#" class="w3-button w3-blue">View Project</a>
-  </div>
-</div>
-
-<!-- Contact Section -->
-<div class="w3-container w3-light-grey w3-padding-64" id="contact">
+<!-- Contact -->
+<section id="contact" class="pink-section fade-in">
   <h2>Contact</h2>
-  <p>Email: your.email@example.com</p>
-  <p>GitHub: <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a></p>
-</div>
+  <p>Email: nnataliechang@gmail.com
+  nxc494@case.edu </p>
+  <p>GitHub: <a href="https://github.com/tobeadded" target="_blank">github.com/tobeadded</a></p>
+</section>
 
-<!-- Footer -->
-<footer class="w3-container w3-black w3-center w3-padding-16">
-  <p>© 2025 Natalie Chang</p>
+<footer>
+  © 2025 Natalie Chang
 </footer>
+
+<script>
+  // Fade-in on scroll
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
