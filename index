@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Natalie Chang | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- W3Schools CSS -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+
+<!-- Top Navigation Bar -->
+<div class="w3-bar w3-black">
+  <a href="#home" class="w3-bar-item w3-button w3-mobile">Home</a>
+  <a href="#about" class="w3-bar-item w3-button w3-mobile">About</a>
+  <a href="#projects" class="w3-bar-item w3-button w3-mobile">Projects</a>
+  <a href="#contact" class="w3-bar-item w3-button w3-mobile">Contact</a>
+</div>
+
+<!-- Home Section -->
+<div class="w3-container w3-padding-64" id="home">
+  <h1 class="w3-xxlarge">Natalie Chang</h1>
+  <p class="w3-large">Aspiring data scientist interested in human cognition, mental health, and extreme environments.</p>
+</div>
+
+<!-- About Section -->
+<div class="w3-container w3-light-grey w3-padding-64" id="about">
+  <h2>About Me</h2>
+  <p>
+    I'm a freshman interested in cognitive science, psychology, and data science.
+    I'm particularly curious about how mental health support can be designed for
+    high-stress, high-isolation environments like space missions and underserved communities on Earth.
+  </p>
+</div>
+
+<!-- Projects Section -->
+<div class="w3-container w3-padding-64" id="projects">
+  <h2>Projects</h2>
+
+  <div class="w3-card w3-padding w3-margin-bottom">
+    <h3>Astronaut Sleep & Stress Analysis</h3>
+    <p>Exploring how sleep disruption and mission duration relate to stress indicators in astronauts.</p>
+    <a href="https://github.com/yourusername/astronaut-sleep-stress" target="_blank" class="w3-button w3-blue">View on GitHub</a>
+  </div>
+
+  <div class="w3-card w3-padding w3-margin-bottom">
+    <h3>Other Project</h3>
+    <p>Short description of another project.</p>
+    <a href="#" class="w3-button w3-blue">View Project</a>
+  </div>
+</div>
+
+<!-- Contact Section -->
+<div class="w3-container w3-light-grey w3-padding-64" id="contact">
+  <h2>Contact</h2>
+  <p>Email: your.email@example.com</p>
+  <p>GitHub: <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a></p>
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-black w3-center w3-padding-16">
+  <p>© 2025 Natalie Chang</p>
+</footer>
+
+</body>
+</html>
