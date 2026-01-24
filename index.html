@@ -96,10 +96,21 @@
 
     .pink-section {
       background-color: var(--light-pink);
-      margin-left: -40px;
-      margin-right: -40px;
-      padding-left: 40px;
-      padding-right: 40px;
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      padding-left: calc((100vw - 1200px) / 2 + 40px);
+      padding-right: calc((100vw - 1200px) / 2 + 40px);
+    }
+    
+    @media (max-width: 1200px) {
+      .pink-section {
+        padding-left: 40px;
+        padding-right: 40px;
+      }
     }
 
     /* Home Section */
@@ -301,27 +312,27 @@
       color: var(--dark-gray);
     }
 
-    /* Animations */
-    .fade-in {
+    /* Animations - ALL FADE IN FROM BOTTOM */
+    .fade-in, .slide-in {
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(50px);
       transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
 
-    .fade-in.visible {
+    .fade-in.visible, .slide-in.visible {
       opacity: 1;
       transform: translateY(0);
     }
-
-    .slide-in {
+    
+    .project-card, .slide-card {
       opacity: 0;
-      transform: translateX(-60px);
-      transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     }
-
-    .slide-in.visible {
+    
+    .project-card.visible, .slide-card.visible {
       opacity: 1;
-      transform: translateX(0);
+      transform: translateY(0);
     }
 
     /* Responsive */
@@ -373,7 +384,7 @@
 
 <!-- Home -->
 <section id="home" class="fade-in">
-  <h1>Natalie Chang</h1>
+  <h1>Natalie Chang</h1> <!-- *** REPLACE: Your full name *** -->
   <p>Exploring data science, cognition, and mental health in extreme environments</p>
 </section>
 
@@ -381,6 +392,7 @@
 <section id="about" class="pink-section fade-in">
   <h2>About Me</h2>
   <p>
+    <!-- *** REPLACE: Your bio - update year, major, interests *** -->
     I'm a freshman interested in cognitive science, psychology, and data science.
     I care deeply about mental health access, especially in high-stress and high-isolation
     environments like space missions and underserved communities on Earth.
@@ -388,9 +400,10 @@
 </section>
 
 <!-- Research Interests -->
-<section id="research" class="slide-in">
+<section id="research" class="fade-in">
   <h2>Research Interests</h2>
   <p>
+    <!-- *** REPLACE: Your research interests *** -->
     I'm interested in how psychological well-being can be supported in extreme, high-isolation
     environments — from long-duration space missions to underserved communities on Earth.
     My current questions focus on sleep, stress, cognition, and adaptive mental health systems.
@@ -408,6 +421,7 @@
         Interactive data visualization analyzing immune cell populations in spaceflight conditions,
         examining T-cell markers (CD3+, CD4+, CD8+) and their implications for astronaut health.
       </p>
+      <!-- *** REPLACE: Update path if your files are in different location *** -->
       <a href="figures/interactive/index.html" class="btn-primary">
         <i class="fas fa-play-circle"></i> View Interactive Presentation
       </a>
@@ -416,9 +430,11 @@
     <div class="project-card">
       <h3><i class="fas fa-moon"></i> Astronaut Sleep & Stress Analysis</h3>
       <p>
+        <!-- *** REPLACE: Update project description or delete this card if not needed *** -->
         An exploratory data analysis investigating how sleep disruption and mission duration
         relate to reported stress indicators in astronauts.
       </p>
+      <!-- *** REPLACE: Your GitHub username and repo name *** -->
       <a href="https://github.com/yourusername/astronaut-sleep-stress" target="_blank" class="btn-primary">
         <i class="fab fa-github"></i> View on GitHub
       </a>
@@ -434,6 +450,7 @@
     </p>
 
     <div class="slides-grid">
+      <!-- *** REPLACE: Update all href paths if files are in different location *** -->
       <div class="slide-card">
         <div class="slide-number">01</div>
         <a href="figures/interactive/slide1_overview.html" target="_blank">Data Overview</a>
@@ -503,7 +520,7 @@
   </div>
 </section>
 
-<!-- Contact -->
+// Contact Info
 <section id="contact" class="pink-section fade-in">
   <h2>Contact</h2>
   <div class="contact-info">
@@ -513,11 +530,11 @@
     </div>
     <div class="contact-item">
       <i class="fab fa-github"></i>
-      <a href="https://github.com/nnataliecc" target="_blank">github.com/nnataliecc</a>
+      <a href="https://github.com/nnataliec" target="_blank">github.com/nnataliec</a>
     </div>
     <div class="contact-item">
       <i class="fab fa-linkedin"></i>
-      <a href="https://linkedin.com/in/nnataliecc" target="_blank">LinkedIn Profile</a>
+      <a href="https://linkedin.com/in/nnataliec" target="_blank">LinkedIn Profile</a>
     </div>
   </div>
 </section>
@@ -527,7 +544,7 @@
 </footer>
 
 <script>
-  // Fade-in on scroll
+  // Fade-in
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -535,10 +552,11 @@
       }
     });
   }, {
-    threshold: 0.1
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
   });
 
-  document.querySelectorAll('.fade-in, .slide-in').forEach(el => observer.observe(el));
+  document.querySelectorAll('.fade-in, .slide-in, .project-card, .slide-card').forEach(el => observer.observe(el));
 </script>
 
 </body>
