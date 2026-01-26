@@ -96,12 +96,10 @@
 
     .pink-section {
       background-color: var(--light-pink);
-      width: 100vw;
-      position: relative;
-      left: 50%;
-      right: 50%;
-      margin-left: -50vw;
-      margin-right: -50vw;
+      width: 100%;
+      max-width: none;
+      margin-left: 0;
+      margin-right: 0;
       padding-left: calc((100vw - 1200px) / 2 + 40px);
       padding-right: calc((100vw - 1200px) / 2 + 40px);
     }
@@ -520,31 +518,35 @@
   </div>
 </section>
 
-// Contact Info
+<!-- Contact -->
 <section id="contact" class="pink-section fade-in">
   <h2>Contact</h2>
   <div class="contact-info">
     <div class="contact-item">
       <i class="fas fa-envelope"></i>
-      <a href="mailto:nnataliechang@gmail.com">nnataliechang@gmail.com</a>
+      <!-- *** REPLACE: Your email address *** -->
+      <a href="mailto:your.email@example.com">your.email@example.com</a>
     </div>
     <div class="contact-item">
       <i class="fab fa-github"></i>
-      <a href="https://github.com/nnataliec" target="_blank">github.com/nnataliec</a>
+      <!-- *** REPLACE: Your GitHub username *** -->
+      <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a>
     </div>
     <div class="contact-item">
       <i class="fab fa-linkedin"></i>
-      <a href="https://linkedin.com/in/nnataliec" target="_blank">LinkedIn Profile</a>
+      <!-- *** REPLACE: Your LinkedIn profile URL *** -->
+      <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn Profile</a>
     </div>
   </div>
 </section>
 
 <footer>
-  © 2025 Natalie Chang | Built with passion for data science and mental health research
+  <!-- *** REPLACE: Your name *** -->
+  © 2026 Natalie Chang | Built with passion for data science and mental health research
 </footer>
 
 <script>
-  // Fade-in
+  // Fade-in on scroll - ALL elements fade in from bottom
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -556,6 +558,7 @@
     rootMargin: '0px 0px -50px 0px'
   });
 
+  // Observe all animated elements
   document.querySelectorAll('.fade-in, .slide-in, .project-card, .slide-card').forEach(el => observer.observe(el));
 </script>
 
