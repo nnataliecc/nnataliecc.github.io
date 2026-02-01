@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flow Cytometry Analysis | Natalie Chang</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --soft-pink: #f7c6d0;
+      --hot-pink: #e75480;
+      --accent-pink: #DC143C;
+      --white: #ffffff;
+      --light-pink: #fdecef;
+      --dark-gray: #333;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: var(--white);
+      color: var(--dark-gray);
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    .top-nav {
+      height: 70px;
+      background-color: var(--soft-pink);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .nav-brand {
+      font-size: 1.3em;
+      font-weight: 700;
+      color: var(--accent-pink);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+    }
+
+    .top-nav a {
+      color: var(--dark-gray);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .top-nav a:hover {
+      color: var(--hot-pink);
+    }
+
+    .offset {
+      margin-top: 70px;
+    }
+
+    /* Header */
+    .project-header {
+      background: linear-gradient(135deg, var(--light-pink) 0%, #FFE4E1 100%);
+      padding: 80px 40px 60px;
+      text-align: center;
+    }
+
+    .project-header h1 {
+      font-size: 3em;
+      color: var(--accent-pink);
+      margin-bottom: 20px;
+    }
+
+    .project-header p {
+      font-size: 1.3em;
+      color: #666;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .project-tags {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      background: var(--hot-pink);
+      color: white;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 0.9em;
+      font-weight: 600;
+    }
+
+    /* Content */
+    .content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+
+    .content h2 {
+      font-size: 2.5em;
+      color: var(--accent-pink);
+      margin-bottom: 30px;
+      margin-top: 50px;
+    }
+
+    .content h3 {
+      font-size: 1.8em;
+      color: var(--hot-pink);
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+
+    .content p {
+      font-size: 1.15em;
+      color: #555;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+
+    .info-box {
+      background: var(--light-pink);
+      padding: 30px;
+      border-radius: 15px;
+      border-left: 5px solid var(--accent-pink);
+      margin: 30px 0;
+    }
+
+    .info-box h4 {
+      color: var(--accent-pink);
+      margin-bottom: 15px;
+      font-size: 1.3em;
+    }
+
+    .info-box ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .info-box li {
+      padding: 8px 0;
+      font-size: 1.1em;
+    }
+
+    .info-box li:before {
+      content: "✓ ";
+      color: var(--hot-pink);
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    /* Embedded plots */
+    .plot-container {
+      margin: 50px 0;
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .plot-container h3 {
+      margin-top: 0;
+    }
+
+    iframe {
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 15px 35px;
+      background: linear-gradient(135deg, var(--hot-pink), var(--accent-pink));
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 1.1em;
+      transition: all 0.3s;
+      margin: 10px 10px 10px 0;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(231,84,128,0.4);
+    }
+
+    footer {
+      background-color: var(--soft-pink);
+      padding: 30px;
+      text-align: center;
+      margin-top: 80px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="top-nav">
+  <a href="../../index.html" class="nav-brand">← Back to Portfolio</a>
+  <div class="nav-links">
+    <a href="#overview">Overview</a>
+    <a href="#visualizations">Visualizations</a>
+    <a href="#findings">Findings</a>
+    <a href="https://github.com/yourusername/portfolio" target="_blank">
+      <i class="fab fa-github"></i> Code
+    </a>
+  </div>
+</div>
+
+<div class="offset"></div>
+
+<!-- Project Header -->
+<div class="project-header">
+  <h1>🔬 Flow Cytometry Analysis</h1>
+  <p>Interactive visualization of immune cell populations in spaceflight conditions</p>
+  
+  <div class="project-tags">
+    <span class="tag">Python</span>
+    <span class="tag">Plotly</span>
+    <span class="tag">Pandas</span>
+    <span class="tag">Data Visualization</span>
+    <span class="tag">Immunology</span>
+  </div>
+</div>
+
+<!-- Content -->
+<div class="content">
+  
+  <section id="overview">
+    <h2>Project Overview</h2>
+    <p>
+      This project analyzes flow cytometry data from the LSDS-122 dataset (Krukowski et al., 2021), 
+      examining immune cell populations in blood samples. The analysis focuses on T-cell markers 
+      (CD3+, CD4+, CD8+) and monocytes, with particular attention to the CD4/CD8 ratio as an 
+      indicator of immune system balance.
+    </p>
+
+    <div class="info-box">
+      <h4>Research Question</h4>
+      <p>How do immune system changes in spaceflight environments affect astronaut mental health and cognitive function?</p>
+    </div>
+
+    <h3>Dataset Information</h3>
+    <p>
+      <strong>Source:</strong> NASA Life Sciences Data Archive (LSDS-122)<br>
+      <strong>Citation:</strong> Krukowski, K., et al. (2021)<br>
+      <strong>Samples:</strong> Tail vein blood samples from rodent spaceflight analog<br>
+      <strong>Measurements:</strong> T-cell populations, monocytes, immune ratios
+    </p>
+
+    <h3>Key Analyses</h3>
+    <div class="info-box">
+      <ul>
+        <li>Distribution analysis of immune cell percentages</li>
+        <li>Correlation patterns between different cell types</li>
+        <li>CD4/CD8 ratio trends across samples</li>
+        <li>Statistical comparison using box plots and violin plots</li>
+        <li>3D visualization of multi-variable relationships</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Interactive Visualizations -->
+  <section id="visualizations">
+    <h2>Interactive Visualizations</h2>
+    <p>Explore the data through interactive plots. Hover over data points for details, zoom, and pan.</p>
+
+    <!-- Plot 1: Overview -->
+    <div class="plot-container">
+      <h3>📊 Data Overview</h3>
+      <p>Summary statistics of all immune markers analyzed.</p>
+      <iframe src="figures/interactive/slide1_overview.html" 
+              width="100%" 
+              height="700" 
+              frameborder="0"></iframe>
+    </div>
+
+    <!-- Plot 2: Distributions -->
+    <div class="plot-container">
+      <h3>📈 Distribution Analysis</h3>
+      <p>Histograms showing the frequency distribution of immune cell percentages across all samples.</p>
+      <iframe src="figures/interactive/slide2_distributions.html" 
+              width="100%" 
+              height="800" 
+              frameborder="0"></iframe>
+    </div>
+
+    <!-- Plot 3: Box Plots -->
+    <div class="plot-container">
+      <h3>📦 Box Plot Comparison</h3>
+      <p>Statistical distributions comparing different immune markers.</p>
+      <iframe src="figures/interactive/slide4_boxplots.html" 
+              width="100%" 
+              height="800" 
+              frameborder="0"></iframe>
+    </div>
+
+    <!-- Plot 4: Summary -->
+    <div class="plot-container">
+      <h3>📋 Key Findings Summary</h3>
+      <p>Summary of key statistics from the analysis.</p>
+      <iframe src="figures/interactive/slide6_summary.html" 
+              width="100%" 
+              height="700" 
+              frameborder="0"></iframe>
+    </div>
+  </section>
+  <!-- Findings -->
+  <section id="findings">
+    <h2>Key Findings</h2>
+    
+    <h3>Immune Cell Distributions</h3>
+    <p>[Add your findings after running analysis, for example:]</p>
+    <ul style="font-size: 1.1em; line-height: 2;">
+      <li>CD3+ T-cells represent approximately 25% of blood cells</li>
+      <li>CD4/CD8 ratio averages around 1.0, indicating balanced immune response</li>
+      <li>Monocyte levels show consistent distribution across samples</li>
+    </ul>
+
+    <h3>Correlations</h3>
+    <p>[Add correlation insights:]</p>
+    <ul style="font-size: 1.1em; line-height: 2;">
+      <li>Strong positive correlation between CD4 and CD8 populations</li>
+      <li>CD4/CD8 ratio shows inverse relationship with total T-cell count</li>
+    </ul>
+
+    <h3>Implications</h3>
+    <div class="info-box">
+      <p>
+        These immune cell patterns provide baseline data for understanding how spaceflight 
+        conditions might affect immune system balance. Changes in CD4/CD8 ratios could indicate 
+        stress responses that may impact cognitive function and mental health during long-duration 
+        missions.
+      </p>
+    </div>
+  </section>
+
+  <!-- Methods -->
+  <section>
+    <h2>Methods & Tools</h2>
+    <h3>Technologies Used</h3>
+    <ul style="font-size: 1.1em; line-height: 2;">
+      <li><strong>Python 3.x</strong> - Data analysis and visualization</li>
+      <li><strong>Pandas</strong> - Data manipulation and cleaning</li>
+      <li><strong>Plotly</strong> - Interactive visualizations</li>
+      <li><strong>NumPy</strong> - Numerical computations</li>
+      <li><strong>Jupyter Notebook</strong> - Analysis workflow</li>
+    </ul>
+
+    <h3>Repository Structure</h3>
+    <pre style="background: #f5f5f5; padding: 20px; border-radius: 10px; overflow-x: auto;">
+projects/flow-cytometry/
+├── index.html              # This page
+├── data/                   # Raw CSV data
+├── notebooks/              # Jupyter analysis notebooks
+└── figures/interactive/    # All interactive HTML plots
+    </pre>
+
+    <div style="text-align: center; margin-top: 40px;">
+      <a href="https://github.com/yourusername/portfolio/tree/main/projects/flow-cytometry" 
+         target="_blank" 
+         class="btn-primary">
+        <i class="fab fa-github"></i> View Code on GitHub
+      </a>
+      <a href="../../index.html" class="btn-primary" style="background: white; color: var(--hot-pink); border: 2px solid var(--hot-pink);">
+        <i class="fas fa-arrow-left"></i> Back to Portfolio
+      </a>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  © 2026 Natalie Chang | Flow Cytometry Analysis Project
+</footer>
+
+</body>
+</html>
